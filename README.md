@@ -7,4 +7,4 @@ Copyright (c) Ruslana Datsenko, Johannes Fleck
 These files include:
 
 1) main.do - for getting empirical estimates and replicating figures: 2,4,5.
-2) plots: plotting figure 3.
+2) plots.m: plotting figure 3.
