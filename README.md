@@ -1,7 +1,7 @@
 These files contain codes and data for the replication of the FEDs note:
 
-**Ruslana Datsenko and Johannes Fleck: "Country-Specific Effects of Euro-Area Monetary Policy: The Role of Sectoral Differences"**   
-Board of Governors of the Federal Reserve System, November 12, 2024  
+**Datsenko, Ruslana, and Johannes Fleck (2024). "Country-Specific Effects of Euro-Area Monetary Policy: The Role of Sectoral Differences,"**  
+FEDS Notes. Washington: Board of Governors of the Federal Reserve System, November 12, 2024,  
 https://doi.org/10.17016/2380-7172.3649.
 
 Please cite the note when using the files.
