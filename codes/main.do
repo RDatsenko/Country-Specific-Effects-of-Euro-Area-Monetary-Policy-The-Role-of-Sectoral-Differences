@@ -18,9 +18,7 @@ tsset dateq
     forvalues i = 0/20 {
 	gen cumF`i'real_gdp_services = (F`i'.real_gdp_services-L.real_gdp_services)/L.real_gdp_services
 	gen cumF`i'real_gdp_manu     = (F`i'.real_gdp_manu-L.real_gdp_manu)/L.real_gdp_manu
-	gen cumF`i'real_gdp_other    = (F`i'.real_gdp_other-L.real_gdp_other)/L.real_gdp_other
 	gen cumF`i'tot_gdp           = (F`i'.tot_gdp-L.tot_gdp)/L.tot_gdp
-	gen cumF`i'unemp             = (F`i'.unemp-L.unemp)
 }
 
 
@@ -50,7 +48,7 @@ drop if dateq < tq(1999, q1)
 drop if dateq > tq(2019, q1)
 
 	 forvalues lead = 0/12 {
-newey cumF`lead'tot_gdp i.quarter i.dummy_crises L1cumF0tot_gdp L2cumF0tot_gdp L1mp_pm_mpd L2mp_pm_mpd L3mp_pm_mpd L4mp_pm_mpd L5mp_pm_mpd L6mp_pm_mpd L7mp_pm_mpd L8mp_pm_mpd mp_pm_mpd, lag(2) force
+newey cumF`lead'tot_gdp i.quarter i.dummy_crises L1unemp L1inflation L1cumF0tot_gdp L2cumF0tot_gdp L1mp_pm_mpd L2mp_pm_mpd L3mp_pm_mpd L4mp_pm_mpd L5mp_pm_mpd L6mp_pm_mpd L7mp_pm_mpd L8mp_pm_mpd mp_pm_mpd, lag(2) force
 quietly est sto m`lead'
 	 }
 
@@ -59,9 +57,6 @@ using ".../estimation/figure2_all.csv", replace plain ///
 cells(b(label("beta_h")) se) ///
 keep(mp_pm_mpd) ///
 se noobs nomtitles compress collabels(, none)
-
-
-
 
 
  forvalues lead = 0/20 {
@@ -113,11 +108,7 @@ gen tot_gdp = real_gdp_services + real_gdp_manu + real_gdp_other
 
 xtset geo1 dateq
     forvalues i = 0/20 {
-	gen cumF`i'real_gdp_services = (F`i'.real_gdp_services-L.real_gdp_services)/L.real_gdp_services
-	gen cumF`i'real_gdp_manu     = (F`i'.real_gdp_manu-L.real_gdp_manu)/L.real_gdp_manu
-	gen cumF`i'real_gdp_other    = (F`i'.real_gdp_other-L.real_gdp_other)/L.real_gdp_other
 	gen cumF`i'tot_gdp           = (F`i'.tot_gdp-L.tot_gdp)/L.tot_gdp
-	gen cumF`i'unemp             = (F`i'.unemp-L.unemp)
 }
 
 
@@ -131,7 +122,7 @@ su pos_shock if mp_pm_mpd < 0
 
 forvalues i = 1/8 {
 	
-foreach varr in cumF0tot_gdp unemp inflation cumF0real_gdp_services cumF0real_gdp_manu mp_pm_mpd mean_inc pos_shock neg_shock { 
+foreach varr in cumF0tot_gdp unemp inflation mp_pm_mpd mean_inc pos_shock neg_shock { 
 gen L`i'`varr' = L`i'.`varr'
 
 }
@@ -148,7 +139,7 @@ egen  newid3 = group(geo1)
 su    newid3
 
 egen time = group(dateq)
-bys newid3: egen min_time = min(time)
+
 
 gen coeff = .
 gen coeff2 = .
