@@ -1,10 +1,14 @@
-These files contain codes and data for the replication of the FEDs note : 
-"Country-Specific Effects of Euro-Area Monetary Policy: The Role of Sectoral Differences," FEDS Notes. 
-Washington: Board of Governors of the Federal Reserve System, November 12, 2024, https://doi.org/10.17016/2380-7172.3649.
+These files contain codes and data for the replication of the FEDs note:
 
-Copyright (c) Ruslana Datsenko, Johannes Fleck
+**Ruslana Datsenko and Johannes Fleck: "Country-Specific Effects of Euro-Area Monetary Policy: The Role of Sectoral Differences"**   
+Board of Governors of the Federal Reserve System, November 12, 2024  
+https://doi.org/10.17016/2380-7172.3649.
 
-These files include:
+Please cite the note when using the files.
 
-1) main.do - for getting empirical estimates and replicating figures: 2,4,5.
-2) plots.m: plotting figure 3.
+They include:
+
+1) main.do: produces empirical estimates and replicates Figures 2, 4 and 5.
+2) plots.m: plots Figure 3.
+
+(Figure 1 uses Bloomberg subscription data which may not be distributed freely.)
