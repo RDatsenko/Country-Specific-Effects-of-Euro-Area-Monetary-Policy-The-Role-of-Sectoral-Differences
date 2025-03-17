@@ -89,9 +89,9 @@ se noobs nomtitles compress collabels(, none)
 
 
 * Import data
-use "/Users/ruslanadatsenko/Documents/GitHub/industry_mp_europe/empirical_results/data/euroarea_gdp_8_3.dta", clear
+use ".../data/euroarea_gdp_8_3.dta", clear
 rename qdate dateq
-merge m:1 dateq using "/Users/ruslanadatsenko/Documents/GitHub/industry_mp_europe/empirical_results/data/shocks2.dta", nogen keep(1 3)
+merge m:1 dateq using ".../data/shocks.dta", nogen keep(1 3)
 
 
 drop if geo == "EA"
